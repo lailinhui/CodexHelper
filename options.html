@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Codex Helper Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>Codex Helper Settings</h1>
+      <p class="muted">
+        Configure your API endpoint / Token / Model. 
+      </p>
+
+      <form id="form" class="card">
+        <label>
+          <div class="label">API URL</div>
+          <input
+            id="apiUrl"
+            type="text"
+            spellcheck="false"
+            placeholder="https://api.openai.com/v1/responses"
+          />
+          <div class="help">
+            Must be an absolute <code>https://</code> URL. Your token will be sent to this endpoint.
+          </div>
+        </label>
+
+        <label>
+          <div class="label">Token</div>
+          <input id="token" type="password" spellcheck="false" placeholder="sk-..." />
+          <div class="help">Stored in Chrome sync storage.</div>
+        </label>
+
+        <label>
+          <div class="label">Model</div>
+          <input id="model" type="text" spellcheck="false" placeholder="gpt-5.2" />
+          <div class="help">Example: <code>gpt-5.2</code></div>
+        </label>
+
+        <label>
+          <div class="label">是否支持划词提示</div>
+          <select id="enableSelectionActions">
+            <option value="false">否</option>
+            <option value="true">是</option>
+          </select>
+          <div class="help">启用后，鼠标选中文本会出现「翻译/解释」浮层快捷操作。</div>
+        </label>
+
+        <div class="row">
+          <button class="btn primary" type="submit">Save</button>
+          <button class="btn" id="resetBtn" type="button">Reset defaults</button>
+          <div class="status" id="status"></div>
+        </div>
+      </form>
+
+      <section class="card">
+        <h2>Notes</h2>
+        <ul>
+          <li>
+            The extension requests host permissions for <code>https://*/*</code> so it can call your
+            configured endpoint.
+          </li>
+          <li>
+            The popup reads the active tab content only when you click Send/Refresh.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

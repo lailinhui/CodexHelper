@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Codex Helper",
+  "version": "0.1.0",
+  "description": "Chat with an Codex model using the current page content as context.",
+  "action": {
+    "default_title": "Codex Helper",
+    "default_icon": {
+      "16": "./icon.png",
+      "32": "./icon.png",
+      "48": "./icon.png",
+      "128": "./icon.png"
+    }
+  },
+  "icons": {
+    "16": "./icon.png",
+    "32": "./icon.png",
+    "48": "./icon.png",
+    "128": "./icon.png"
+  },
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["http://*/*", "https://*/*"]
+}
